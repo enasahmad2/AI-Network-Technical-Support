@@ -1,17 +1,56 @@
-# AI-Powered Network Technical Support
+مشروع نظام الدعم الفني الذكي (AI-Network-Technical-Support)
 
-## 📝 Project Overview
-This project is a secure Client-Server system developed using Python Sockets. It integrates Gemini AI to provide automated and intelligent technical assistance to users across a network.
 
-## 👥 Team Members
-* Enas Ahmad ()
-* Losam Sallom ()
-* Aya Trkhan ()
-* Enas Hsen ()
+​1. مقدمة عن المشروع
+​هذا المشروع عبارة عن نظام "عميل-سيرفر" (Client-Server) مبني بلغة بايثون، يهدف إلى تقديم دعم فني تقني آلي للمستخدمين عبر دمج تقنيات الشبكات (Sockets) مع تقنيات الذكاء الاصطناعي (Google Gemini AI).
 
-## ⚙️ Technical Features
-* Socket Programming: Reliable TCP connection between Client and Server.
-* AI Integration: Powered by Google Gemini API for real-time problem solving.
-* Architecture: Multi-threaded server to handle multiple clients simultaneously.
+​2. الهيكلية التقنية (Technical Architecture)
+​اللغة المستخدمة: Python 3.x
+​بروتوكول الاتصال: TCP/IP عبر مكتبة socket.
+​نموذج الذكاء الاصطناعي: Google Gemini Pro / Flash.
+​منفذ الاتصال (Port): 5000.
 
-## 🔄 Mirror Group Coordination
+​3. التحديات التقنية والحلول (Crashed & Fixed)
+​خلال تطوير المشروع، تم مواجهة عدة عقبات تقنية حرجة وتم حلها بنجاح:
+​مشكلة القيود الجغرافية (Geographical Restrictions): * العقبة: خدمات Gemini كانت محجوبة في منطقة العمل. 
+​الحل: استخدام VPN (دولة هولندا) لتجاوز الحجب وتأمين اتصال مستقر بخوادم جوجل.
+​خطأ الموديل (Error 404 - Model Not Found): 
+​العقبة: عدم توافق إصدار مكتبة google-generativeai مع أسماء الموديلات الحديثة.
+​الحل: برمجة سطر "ديناميكي" يقوم بفحص الموديلات المتاحة في نسخة المكتبة وتلقيمها للسيرفر تلقائياً.
+​خطأ المفتاح (API Key Invalid): 
+​العقبة: خطأ مطبعي في اسم المتغير (NameError) ونسخ غير دقيق للمفتاح.
+​الحل: تصحيح التسميات البرمجية (Variable Naming) وضبط إعدادات المشروع في Google AI Studio.
+​مشكلة استلام البيانات المقطوعة (Data Truncation): 
+​العقبة: الإجابات الطويلة كانت تظهر ناقصة في شاشة العميل.
+​الحل: تعديل Buffer الاستقبال (Recv) ليقرأ البيانات على دفعات (Chunks) لضمان وصول النص كاملاً.
+
+
+​4. طريقة التشغيل (Setup & Run)
+​تفعيل الـ VPN على دولة مدعومة.
+​تشغيل السيرفر أولاً: python server.py.
+​فتح نافذة تيرمينال ثانية وتشغيل العميل: python client.py.
+​إدخال الاستفسار الفني واستلام الرد الآلي
+
+. ميزات النظام المتقدمة (Advanced Features)
+​تم تطوير النظام ليشمل خصائص برمجية ترفع من كفاءته في بيئة العمل الحقيقية:
+​Multithreaded Architecture: * يعمل السيرفر بنظام "التعددية" عبر مكتبة threading في بايثون، مما يسمح له بمعالجة عدة طلبات من عملاء مختلفين في آن واحد دون تجميد أو تأخير.
+
+
+​Contextual AI Conversations (Session Persistence): 
+​تم ربط كل عميل (عبر الـ IP الخاص به) بجلسة محادثة مستقلة داخل السيرفر. هذا يتيح للذكاء الاصطناعي تذكر السياق السابق وفهم الأسئلة المتتابعة التي تعتمد على الضمائر.
+
+
+​Professional Logging System: 
+​تم دمج نظام تسجيل متكامل يقوم بتوثيق جميع حركات السيرفر (وقت الاتصال، نوع الطلب، الأخطاء التقنية) في ملف خارجي باسم server_activity.log لأغراض المراقبة والأمان.
+
+​6. الهيكل البرمجي (Code Structure)
+​server.py: المحرك الرئيسي الذي يدير الشبكة، السجلات، والاتصال بـ Google Gemini API.
+​gui_client.py: الواجهة الرسومية للمستخدم المبنية بمكتبة Tkinter والتي تدعم الـ Dark Mode.
+​server_activity.log: ملف السجل التلقائي الذي يتم تحديثه لحظياً.
+​7. لغة البرمجة والمكتبات (Requirements)
+
+Python 3.10+
+google-generativeai
+logging (Standard Library)
+socket (Standard Library)
+threading (Standard Library)
